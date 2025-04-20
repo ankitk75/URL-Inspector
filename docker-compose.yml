@@ -1,0 +1,58 @@
+version: '3.9'
+
+services:
+  frontend:
+    build: ./frontend
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
+    environment:
+      - REACT_APP_API_URL=http://localhost:8000
+
+  backend:
+    build: ./backend
+    command: uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
+    volumes:
+      - ./backend:/app
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+      - redis
+    environment:
+      - DATABASE_URL=postgresql://postgres:postgres@db:5432/url_inspector
+      - REDIS_URL=redis://redis:6379/0
+
+  celery_worker:
+    build: ./backend
+    command: celery -A app.worker worker --loglevel=info
+    volumes:
+      - ./backend:/app
+    depends_on:
+      - backend
+      - redis
+    environment:
+      - DATABASE_URL=postgresql://postgres:postgres@db:5432/url_inspector
+      - REDIS_URL=redis://redis:6379/0
+
+  db:
+    image: postgres:15
+    restart: always
+    environment:
+      POSTGRES_DB: url_inspector
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+  redis:
+    image: redis:7
+    ports:
+      - "6379:6379"
+    restart: always
+
+volumes:
+  pgdata:
