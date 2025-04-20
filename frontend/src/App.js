@@ -118,7 +118,7 @@ function App() {
                   rows={4}
                   value={urls}
                   onChange={handleInputChange}
-                  placeholder="https://example.com\nhttps://another.com"
+                  placeholder="https://example.com"
                 />
                 <div {...getRootProps()} className={clsx(
                   'flex items-center gap-3 p-3 rounded-lg cursor-pointer border-2 border-dashed transition',
