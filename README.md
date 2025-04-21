@@ -106,7 +106,3 @@ A full-stack web app to monitor the health of websites, providing real-time stat
 ![URL Inspector Dashboard - Part 2](./screenshots/part2.png)
 
 ---
-
-## 📄 License
-
-MIT
