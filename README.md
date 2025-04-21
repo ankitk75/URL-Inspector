@@ -17,7 +17,9 @@ A full-stack web app to monitor the health of websites, providing real-time stat
 
 ## 🌐 Live Demo Screenshot
 
-<!-- Place a screenshot of the web app UI here -->
+![URL Inspector Dashboard - Part 1](./screenshots/part1.png)
+
+![URL Inspector Dashboard - Part 2](./screenshots/part2.png)
 
 ---
 
@@ -97,12 +99,4 @@ A full-stack web app to monitor the health of websites, providing real-time stat
 - Redis is not required.
 - Easily extensible for new features (alerts, auth, etc).
 
----
 
-## 📸 Screenshot
-
-![URL Inspector Dashboard - Part 1](./screenshots/part1.png)
-
-![URL Inspector Dashboard - Part 2](./screenshots/part2.png)
-
----
